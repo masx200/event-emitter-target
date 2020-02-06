@@ -13,7 +13,7 @@
         "rollup-plugin-ts": "^1.2.12",
     "prettier": "1.19.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.8.0-dev.20200204",
+    "typescript": "^3.8.0-dev.20200204"
     
   },
   "type": "module",
