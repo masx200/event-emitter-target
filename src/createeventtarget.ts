@@ -1,20 +1,14 @@
-export default function createorclass(){
-	const eventemittertarget=createeventtarget() 
-	if(this instanceof createorclass){
-
-Object.assign(this,eventemittertarget)
-return this
-
-}else{
-return eventemittertarget
-
+export default function createorclass() {
+  const eventemittertarget = createeventtarget();
+  if (this instanceof createorclass) {
+    Object.assign(this, eventemittertarget);
+    return this;
+  } else {
+    return eventemittertarget;
+  }
 }
-
-
-
-};
- type EVENTNAME = string | symbol;
- type EVENTLISTENER = (event?: any) => void;
+type EVENTNAME = string | symbol;
+type EVENTLISTENER = (event?: any) => void;
 
 function createeventtarget() {
   const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
@@ -117,12 +111,16 @@ function createeventtarget() {
 }
 function assertEVENTNAME(name: any): asserts name is EVENTNAME {
   if ("string" !== typeof name && "symbol" !== typeof name) {
-    throw new TypeError(" EVENTNAME expected: string | symbol;but invalid :" + name);
+    throw new TypeError(
+      " EVENTNAME expected: string | symbol;but invalid :" + name
+    );
   }
 }
 
 function assertEVENTLISTENER(callback: any): asserts callback is EVENTLISTENER {
   if ("function" !== typeof callback) {
-    throw new TypeError(" EVENTLISTENER expected: (event?: any) => void;but invalid:" + callback);
+    throw new TypeError(
+      " EVENTLISTENER expected: (event?: any) => void;but invalid:" + callback
+    );
   }
 }
