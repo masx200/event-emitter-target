@@ -1,11 +1,10 @@
 # event-emitter-target
+
 用函数式编程写成的发布订阅事件机制模块
  
 # API
 
 ```ts
-type EventEmitterTarget = ReturnType<typeof createeventtarget>;
-declare function createorclass(this: EventEmitterTarget | undefined): EventEmitterTarget;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 declare function createeventtarget(): {
@@ -23,7 +22,6 @@ declare function createeventtarget(): {
     eventNames: () => EVENTNAME[];
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
-declare const a: typeof createorclass;
-export { a as default };
+
 
 ```
