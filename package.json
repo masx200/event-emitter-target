@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    
+   
+    "prettier": "1.19.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.8.0-dev.20200204",
+    
+  },
+  "type": "module",
+  "name": "@masx200/event-emitter-target",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "prettier": "prettier --parser=typescript --write ./src/**/*.ts",
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "start": "node  --experimental-modules   ./dist/index.js "
+  },
+  "keywords": [],
+  "author": "masx200 <34191203+masx200@users.noreply.github.com>",
+  "description": "用函数式编程写成的发布订阅事件机制模块",
+  "repository": "git+https://github.com/masx200/event-emitter-target.git",
+  "bugs": {
+    "url": "https://github.com/masx200/event-emitter-target/issues"
+  },
+  "homepage": "https://github.com/masx200/event-emitter-target#readme"
+}
