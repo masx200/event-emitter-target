@@ -1,9 +1,9 @@
 type EventEmitterTarget=ReturnType<typeof createeventtarget>
 export default function createorclass(
-  this?: EventEmitterTarget
+  this: EventEmitterTarget|undefined
 ): EventEmitterTarget {
   const eventemittertarget = createeventtarget();
-  if (this instanceof createorclass) {
+  if (this&&this instanceof createorclass) {
     Object.assign(this, eventemittertarget);
     return this;
   } else {
