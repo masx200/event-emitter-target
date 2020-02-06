@@ -3,7 +3,14 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     
-   
+   "rollup": "^1.29.0",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-sourcemaps": "^0.5.0",
+        "rollup-plugin-terser": "^5.2.0",
+        "rollup-plugin-ts": "^1.2.12",
     "prettier": "1.19.1",
     "tslib": "^1.10.0",
     "typescript": "^3.8.0-dev.20200204",
@@ -15,9 +22,9 @@
   "license": "MIT",
   "scripts": {
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts",
-    "watch": "tsc --watch",
-    "build": "tsc",
-    "start": "node  --experimental-modules   ./dist/index.js "
+    "watch": "rollup -c  rollup.config.js --watch",
+    "build": "rollup -c  rollup.config.js"
+    
   },
   "keywords": [],
   "author": "masx200 <34191203+masx200@users.noreply.github.com>",
