@@ -1,4 +1,4 @@
-export default function createorclass() {
+export default function createorclass(this:ReturnType<createeventtarget>):ReturnType<createeventtarget> {
   const eventemittertarget = createeventtarget();
   if (this instanceof createorclass) {
     Object.assign(this, eventemittertarget);
