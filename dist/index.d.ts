@@ -1,4 +1,5 @@
-declare function createorclass(this: ReturnType<typeof createeventtarget>): ReturnType<typeof createeventtarget>;
+type EventEmitterTarget = ReturnType<typeof createeventtarget>;
+declare function createorclass(this: EventEmitterTarget | undefined): EventEmitterTarget;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 declare function createeventtarget(): {
