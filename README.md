@@ -57,11 +57,22 @@ declare function toprimitive(): string;
 
 创建 `EventEmitterTarget`对象,有两种方法
 
+当做函数使用
+
 ```js
+
+let emitter=EventEmitterTargetClass()
 
 ```
 
+当做类使用
+
 ```js
+
+class myemitter extends EventEmitterTargetClass{}
+
+let emitter=new myemitter
+
 
 ```
 
