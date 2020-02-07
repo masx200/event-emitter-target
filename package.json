@@ -32,7 +32,10 @@
   "keywords": [],
   "author": "masx200 <34191203+masx200@users.noreply.github.com>",
   "description": "用函数式编程写成的发布订阅事件机制模块",
-  "repository": "git+https://github.com/masx200/event-emitter-target.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masx200/event-emitter-target.git"
+  },
   "bugs": {
     "url": "https://github.com/masx200/event-emitter-target/issues"
   },
