@@ -4,7 +4,6 @@
 
 用Typescript函数式编程写成
 
-
 添加事件监听器有自动去重功能
 
 事件触发时，监听器函数异步执行
@@ -37,7 +36,6 @@ declare function createEventEmitterTarget(): {
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
 
-
 ```
 ## `emitter[Symbol.toStringTag]`
 
@@ -45,67 +43,59 @@ declare function createEventEmitterTarget(): {
 
 可以用来判断对象类型。
 
-
 ## `emitter[Symbol.iterator]()`
 
 返回所有的事件名和监听器的数组迭代器
 
 ## `emitter.listenerCount(eventName)`
 
-
-Returns the number of listeners listening to the event named `eventName`.
+返回侦听名为`eventName`的事件的侦听器数
 
 ## `emitter.clear(eventName)`
 
-Alias for `emitter.removeAllListeners(eventName)`
+别名 `emitter.removeAllListeners(eventName)`
 
 ## `emitter.removeAllListeners(eventName)`
 
-Removes all listeners of the specified eventName.
+删除指定`eventName`的所有侦听器。
 
-It is bad practice to remove listeners added elsewhere in the code, particularly when the EventEmitter instance was created by some other component or module .
-
+删除代码中其他地方添加的侦听器是一种不好的做法，尤其是在`EventEmitterTarget`实例由其他组件或模块创建时。
 
 
 ## `emitter.on(eventName, listener)`
 
-Adds the listener function to the end of the listeners array for the event named `eventName`.  Checks are made to see if the listener has already been added. Multiple calls passing the same combination of eventName and listener will NOT result in the listener being added, and called, multiple times.
+将监听器函数添加到名为`eventName`的事件的监听器数组的末尾。检查是否已添加侦听器。通过`eventName`和`listener`的相同组合进行的多次调用不会导致多次添加和调用该监听器。
 
 ## `emitter.addListener(eventName, listener)`
 
-Alias for `emitter.on(eventName, listener)`
+别名 `emitter.on(eventName, listener)`
 
 ## `emitter.off(eventName, listener)`
 
-Alias for `emitter.removeListener(eventName, listener)`.
-
-
+别名 `emitter.removeListener(eventName, listener)`.
 
 ## `emitter.removeListener(eventName, listener)`
 
-Removes the specified listener from the listener array for the event named `eventName`.
+从名为`eventName`的事件的侦听器数组中删除指定的侦听器。
 
-`removeListener() `will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified eventName, then `removeListener()` need NOT be called multiple times to remove each instance.
+`removeListener() `将最多从侦听器数组中删除一个侦听器实例。如果已将任何单个侦听器多次添加到指定`eventName`的侦听器数组，则`removeListener()`无需多次调用即可删除每个实例。
 
 ## `emitter.once(eventName, listener)`
 
-Adds a one-time listener function for the event named eventName. The next time `eventName` is triggered, this listener is removed and then invoked.
+为名为`eventName`的事件添加一次性侦听器函数。下次`eventName`触发时，将删除此侦听器，然后调用它。
 
 ## `emitter.emit(eventName, args)`
 
-ASynchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+以注册事件`eventName`的顺序异步调用为名为的事件注册的每个侦听器，并将提供的参数传递给每个侦听器。
 
 ## `emitter.dispatch(eventName, args)`
 
-Alias for `emitter.emit(eventName, args)`
-
+别名 `emitter.emit(eventName, args)`
 
 ## `emitter.eventNames()`
 
-Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or Symbols.
-
-
+返回一个数组，该数组列出发射器已为其注册侦听器的事件。数组中的值将是`string`或`symbol`。
 
 ## `emitter.listeners(eventName)`
 
-Returns a copy of the array of listeners for the event named `eventName`.
+返回名为`eventName`的事件的侦听器数组的副本。
