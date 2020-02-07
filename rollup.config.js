@@ -1,9 +1,26 @@
- import sourcemaps from 'rollup-plugin-sourcemaps';
+import babel from "rollup-plugin-babel"; 
+import sourcemaps from 'rollup-plugin-sourcemaps';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import json from '@rollup/plugin-json';
 import typescript from 'rollup-plugin-ts';
+const mybabelplugin = babel({
+  plugins: ["@babel/plugin-proposal-optional-catch-binding"],
+  presets: [
+    [
+      "@babel/preset-env",
+      {
+        targets: [
+          "last 1 edge version",
+          "last 1 safari version",
+          "last 1 chrome version",
+          "last 1 firefox version"
+        ]
+      }
+    ]
+  ]
+});
 const myterserplugin = terser({
     sourcemap: true,
     toplevel: true,
@@ -33,6 +50,7 @@ export default [{
             resolve(),
             commonjs(),
             typescript({}),
+mybabelplugin,
             myterserplugin
         ]
     }];
