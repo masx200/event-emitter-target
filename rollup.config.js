@@ -7,7 +7,7 @@ import json from "@rollup/plugin-json";
 import typescript from "rollup-plugin-ts";
 const mybabelplugin = babel({
   sourcemap: true,
-  extensions: [".jsx", ".ts", ".js", ".tsx"],
+ // extensions: [".jsx", ".ts", ".js", ".tsx"],
   plugins: ["@babel/plugin-proposal-optional-catch-binding"],
   presets: [
     [
