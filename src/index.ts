@@ -1,6 +1,6 @@
 export type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 
-export default EventEmitterTargetConstructor
+
 
 const EventEmitterTargetConstructor:{
 new():EventEmitterTarget,
@@ -20,7 +20,7 @@ new():EventEmitterTarget,
 }
 export type EVENTNAME = string | symbol;
 export type EVENTLISTENER = (event?: any) => void;
-
+export default EventEmitterTargetConstructor
  function createEventEmitterTarget() {
   const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
   const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
