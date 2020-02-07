@@ -39,6 +39,17 @@ declare function createEventEmitterTarget(): {
 
 
 ```
+## emitter[Symbol.toStringTag]
+
+此属性值为 "EventEmitterTarget"
+
+可以用来判断对象类型
+
+
+## emitter[Symbol.iterator]()
+
+返回所有的事件名和监听器的数组迭代器
+
 ## emitter.listenerCount(eventName)
 
 
@@ -75,3 +86,26 @@ Alias for emitter.removeListener(eventName, listener).
 Removes the specified listener from the listener array for the event named eventName.
 
 removeListener() will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified eventName, then removeListener() need NOT be called multiple times to remove each instance.
+
+## emitter.once(eventName, listener)
+
+Adds a one-time listener function for the event named eventName. The next time eventName is triggered, this listener is removed and then invoked.
+
+## emitter.emit(eventName, args)
+
+ASynchronously calls each of the listeners registered for the event named eventName, in the order they were registered, passing the supplied arguments to each.
+
+## emitter.dispatch(eventName, args)
+
+Alias for emitter.emit(eventName, args)
+
+
+## emitter.eventNames()
+
+Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or Symbols.
+
+
+
+## emitter.listeners(eventName)
+
+Returns a copy of the array of listeners for the event named eventName.
