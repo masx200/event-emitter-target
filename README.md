@@ -7,7 +7,7 @@
 ```ts
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
-declare function createeventtarget(): {
+declare function createEventEmitterTarget(): {
     [Symbol.toStringTag]: string;
     listenerCount: (name: EVENTNAME) => number;
     clear: (name: EVENTNAME) => void;
