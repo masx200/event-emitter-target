@@ -53,6 +53,18 @@ declare function createEventEmitterTarget(): {
 };
 declare function toprimitive(): string;
 ```
+## `EventEmitterTargetClass`
+
+创建 `EventEmitterTarget`对象,有两种方法
+
+```js
+
+```
+
+```js
+
+```
+
 
 ## `emitter[Symbol.toStringTag]`
 
