@@ -5,6 +5,7 @@
 # API
 
 ```ts
+type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 declare function createEventEmitterTarget(): {
