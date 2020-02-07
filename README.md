@@ -39,14 +39,14 @@ declare function createEventEmitterTarget(): {
 
 
 ```
-## emitter[Symbol.toStringTag]
+## `emitter[Symbol.toStringTag]`
 
 此属性值为 "EventEmitterTarget"
 
 可以用来判断对象类型
 
 
-## emitter[Symbol.iterator]()
+## `emitter[Symbol.iterator]()`
 
 返回所有的事件名和监听器的数组迭代器
 
