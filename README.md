@@ -21,6 +21,43 @@ yarn add https://github.com/masx200/event-emitter-target.git
 import EventEmitterTargetClass from "@masx200/event-emitter-target";
 ```
 
+# 示例
+
+创建 `EventEmitterTarget`对象,有两种方法
+
+1.当做函数使用
+
+```js
+
+let emitter=EventEmitterTargetClass()
+
+```
+
+2.当做类使用
+
+```js
+
+class myemitter extends EventEmitterTargetClass{}
+
+let emitter=new myemitter
+
+
+```
+
+以下示例显示了`EventEmitterTarget`具有单个侦听器的简单实例。
+
+该`EventEmitterTarget.on()`方法用于注册侦听器，
+
+而该`EventEmitterTarget.emit()`方法用于触发事件。
+
+```js
+emitter.on('event', () => {
+  console.log('an event occurred!');
+});
+emitter.emit('event');
+```
+
+
 # API
 
 https://github.com/masx200/event-emitter-target/blob/master/dist/index.d.ts
@@ -55,27 +92,11 @@ declare function toprimitive(): string;
 ```
 ## `EventEmitterTargetClass`
 
-创建 `EventEmitterTarget`对象,有两种方法
+1.可当做函数使用
 
-当做函数使用
+2.可当做类使用
 
-```js
-
-let emitter=EventEmitterTargetClass()
-
-```
-
-当做类使用
-
-```js
-
-class myemitter extends EventEmitterTargetClass{}
-
-let emitter=new myemitter
-
-
-```
-
+返回一个`EventEmitterTarget`对象
 
 ## `emitter[Symbol.toStringTag]`
 
