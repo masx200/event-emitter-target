@@ -28,20 +28,15 @@ import EventEmitterTargetClass from "@masx200/event-emitter-target";
 1.当做函数使用
 
 ```js
-
-let emitter=EventEmitterTargetClass()
-
+let emitter = EventEmitterTargetClass();
 ```
 
 2.当做类使用
 
 ```js
+class myemitter extends EventEmitterTargetClass {}
 
-class myemitter extends EventEmitterTargetClass{}
-
-let emitter=new myemitter
-
-
+let emitter = new myemitter();
 ```
 
 以下示例显示了`EventEmitterTarget`具有单个侦听器的简单实例。
@@ -51,12 +46,11 @@ let emitter=new myemitter
 而该`EventEmitterTarget.emit()`方法用于触发事件。
 
 ```js
-emitter.on('event', () => {
-  console.log('an event occurred!');
+emitter.on("event", () => {
+  console.log("an event occurred!");
 });
-emitter.emit('event');
+emitter.emit("event");
 ```
-
 
 # API
 
@@ -90,6 +84,7 @@ declare function createEventEmitterTarget(): {
 };
 declare function toprimitive(): string;
 ```
+
 ## `EventEmitterTargetClass`
 
 1.可当做函数使用
