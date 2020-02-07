@@ -41,8 +41,12 @@ function createEventEmitterTarget() {
     assertEVENTNAME(name);
     if (监听器回调映射.has(name)) {
       const 监听器集合 = 获取监听器集合(name);
-      监听器集合.forEach(async listener => {
-        listener(event);
+      监听器集合.forEach( listener => {
+      	Promise.resolve().then(()=>{
+      	listener(event);
+})
+        
+        
       });
     }
   }
@@ -54,6 +58,7 @@ function createEventEmitterTarget() {
     if (!wrapped) {
       const 一次包装 = (event?: any) => {
         off(name, 一次包装);
+         off(name,callback)
         if (!fired) {
           fired = true;
           callback(event);
@@ -64,6 +69,8 @@ function createEventEmitterTarget() {
     }
 
     on(name, wrapped);
+    
+    off(name,callback)
   }
   function on(name: EVENTNAME, callback: EVENTLISTENER) {
     assertEVENTNAME(name);
@@ -77,6 +84,10 @@ function createEventEmitterTarget() {
 
     const 监听器集合 = 获取监听器集合(name);
     监听器集合.delete(callback);
+    let 一次包装=源回调到一次包装.get(callback);
+    if(一次包装){
+监听器集合.delete(一次包装);
+}
   }
 
   function eventNames(): EVENTNAME[] {
@@ -100,8 +111,21 @@ function createEventEmitterTarget() {
       return 0;
     }
   }
+  
+  function iterator():[EVENTNAME,EVENTLISTENER[]][]{
+
+return [...监听器回调映射 ].map(([key,value])=>{
+
+return [key,[...value]]
+
+})
+
+}
   const eventtarget = {
-    [Symbol.toStringTag]: "EventEmitterTarget",
+  	[Symbol.toPrimitive]:toprimitive,
+  
+    [Symbol.toStringTag]:toStringTag,
+    	[Symbol.iterator]:iterator,
     listenerCount,
     clear,
     removeAllListeners: clear,
@@ -131,4 +155,9 @@ function assertEVENTLISTENER(callback: any): asserts callback is EVENTLISTENER {
       " EVENTLISTENER expected: (event?: any) => void;but invalid:" + callback
     );
   }
+}
+const toStringTag= "EventEmitterTarget"
+  function toprimitive():string{
+return ({}).toString.call({[Symbol.toStringTag]: toStringTag})
+
 }
