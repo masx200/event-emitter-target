@@ -9,7 +9,7 @@ type EVENTLISTENER = (event?: any) => void;
 declare function createEventEmitterTarget(): {
     [Symbol.toPrimitive]: typeof toprimitive;
     [Symbol.toStringTag]: string;
-    [Symbol.iterator]: () => [EVENTNAME, EVENTLISTENER[]][];
+    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
     listenerCount: (name: EVENTNAME) => number;
     clear: (name: EVENTNAME) => void;
     removeAllListeners: (name: EVENTNAME) => void;

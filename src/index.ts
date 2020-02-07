@@ -65,10 +65,8 @@ function createEventEmitterTarget() {
       wrapped = 一次包装;
       源回调到一次包装.set(callback, wrapped);
     }
-offraw(name, callback);
+    offraw(name, callback);
     on(name, wrapped);
-
-    
   }
   function on(name: EVENTNAME, callback: EVENTLISTENER) {
     assertEVENTNAME(name);
@@ -76,25 +74,23 @@ offraw(name, callback);
     const 监听器集合 = 获取监听器集合(name);
     监听器集合.add(callback);
   }
-  function offraw(name: EVENTNAME, callback: EVENTLISTENER){
-  	const 监听器集合 = 获取监听器集合(name);
+  function offraw(name: EVENTNAME, callback: EVENTLISTENER) {
+    const 监听器集合 = 获取监听器集合(name);
     监听器集合.delete(callback);
-  
-}
-function offwrap(name: EVENTNAME, callback: EVENTLISTENER){
-  	const 监听器集合 = 获取监听器集合(name);
- let 一次包装 = 源回调到一次包装.get(callback);
+  }
+  function offwrap(name: EVENTNAME, callback: EVENTLISTENER) {
+    const 监听器集合 = 获取监听器集合(name);
+    let 一次包装 = 源回调到一次包装.get(callback);
     if (一次包装) {
       监听器集合.delete(一次包装);
     }
-  
-}
+  }
   function off(name: EVENTNAME, callback: EVENTLISTENER) {
     assertEVENTNAME(name);
     assertEVENTLISTENER(callback);
 
-  offraw(name,callback)
-  offwrap(name,callback)
+    offraw(name, callback);
+    offwrap(name, callback);
   }
 
   function eventNames(): EVENTNAME[] {
@@ -119,12 +115,14 @@ function offwrap(name: EVENTNAME, callback: EVENTLISTENER){
     }
   }
 
-  function iterator(): Iterator<[EVENTNAME, EVENTLISTENER[]]> {
-    let resultarr= [...监听器回调映射].map(([key, value]) => {
-      return [key, [...value]];
+  function iterator(): IterableIterator<[EVENTNAME, EVENTLISTENER[]]> {
+    let resultarr: Array<[EVENTNAME, EVENTLISTENER[]]> = [
+      ...监听器回调映射
+    ].map(([key, value]) => {
+      return [key, [...value]] as [EVENTNAME, EVENTLISTENER[]];
     });
-    
-    return resultarr [Symbol.iterator]()
+
+    return resultarr[Symbol.iterator]();
   }
   const eventtarget = {
     [Symbol.toPrimitive]: toprimitive,
