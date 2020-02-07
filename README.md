@@ -1,8 +1,13 @@
 # event-emitter-target
 
-用Typescript函数式编程写成的发布订阅事件机制模块
+发布订阅事件机制模块
+
+用Typescript函数式编程写成
+
 
 添加事件监听器有自动去重功能
+
+事件触发时，监听器函数异步执行
  
 # API
 
