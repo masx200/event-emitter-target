@@ -8,10 +8,7 @@
 
 事件触发时，监听器函数异步执行
 
-
 # 安装模块
-
-
 
 ```shell
 yarn add https://github.com/masx200/event-emitter-target.git
@@ -23,7 +20,6 @@ yarn add https://github.com/masx200/event-emitter-target.git
 ```javascript
 import EventEmitterTargetClass from "@masx200/event-emitter-target";
 ```
-
 
 # API
 
