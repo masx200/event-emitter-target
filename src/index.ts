@@ -1,25 +1,27 @@
 export type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
-declare const EventEmitterTargetClass:{
-new():EventEmitterTarget,
-():EventEmitterTarget,
-}
-export { EventEmitterTargetClass}
 
-const EventEmitterTargetClass=function EventEmitterTargetClass(
+export default EventEmitterTargetConstructor
+
+const EventEmitterTargetConstructor:{
+new():EventEmitterTarget,
+
+}&createEventEmitterTarget
+
+=function EventEmitterTargetConstructor(
   this: EventEmitterTarget | undefined
 ): EventEmitterTarget {
   const eventemittertarget = createEventEmitterTarget();
-  if (this && this instanceof EventEmitterTargetClass) {
+  if (this && this instanceof EventEmitterTargetConstructor) {
     Object.assign(this, eventemittertarget);
     return this;
   } else {
-    return eventemittertarget;
+    return new  EventEmitterTargetConstructor;
   }
 }
 export type EVENTNAME = string | symbol;
 export type EVENTLISTENER = (event?: any) => void;
 
-export function createEventEmitterTarget() {
+ function createEventEmitterTarget() {
   const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
   const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
   function 获取监听器集合(name: EVENTNAME): Set<EVENTLISTENER> {
