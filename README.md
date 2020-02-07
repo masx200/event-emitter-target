@@ -21,7 +21,12 @@ type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 declare function createEventEmitterTarget(): {
+    
+[Symbol.toPrimitive]: typeof toprimitive;
     [Symbol.toStringTag]: string;
+    [Symbol.iterator]: () => [EVENTNAME, EVENTLISTENER[]][];
+   
+
     listenerCount: (name: EVENTNAME) => number;
     clear: (name: EVENTNAME) => void;
     removeAllListeners: (name: EVENTNAME) => void;
@@ -35,6 +40,8 @@ declare function createEventEmitterTarget(): {
     eventNames: () => EVENTNAME[];
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
+
+declare function toprimitive(): string;
 
 ```
 ## `emitter[Symbol.toStringTag]`
