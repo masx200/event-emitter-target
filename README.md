@@ -41,9 +41,9 @@ declare function createEventEmitterTarget(): {
 ```
 ## `emitter[Symbol.toStringTag]`
 
-此属性值为 "EventEmitterTarget"
+此属性值为 `"EventEmitterTarget"`，
 
-可以用来判断对象类型
+可以用来判断对象类型。
 
 
 ## `emitter[Symbol.iterator]()`
@@ -53,51 +53,51 @@ declare function createEventEmitterTarget(): {
 ## `emitter.listenerCount(eventName)`
 
 
-Returns the number of listeners listening to the event named eventName.
+Returns the number of listeners listening to the event named `eventName`.
 
 ## `emitter.clear(eventName)`
 
-Alias for emitter.removeAllListeners(eventName)
+Alias for `emitter.removeAllListeners(eventName)`
 
 ## `emitter.removeAllListeners(eventName)`
 
 Removes all listeners of the specified eventName.
 
-It is bad practice to remove listeners added elsewhere in the code, particularly when the EventEmitter instance was created by some other component or module (e.g. sockets or file streams).
+It is bad practice to remove listeners added elsewhere in the code, particularly when the EventEmitter instance was created by some other component or module .
 
 
 
 ## `emitter.on(eventName, listener)`
 
-Adds the listener function to the end of the listeners array for the event named eventName.  Checks are made to see if the listener has already been added. Multiple calls passing the same combination of eventName and listener will NOT result in the listener being added, and called, multiple times.
+Adds the listener function to the end of the listeners array for the event named `eventName`.  Checks are made to see if the listener has already been added. Multiple calls passing the same combination of eventName and listener will NOT result in the listener being added, and called, multiple times.
 
 ## `emitter.addListener(eventName, listener)`
 
-Alias for emitter.on(eventName, listener)
+Alias for `emitter.on(eventName, listener)`
 
 ## `emitter.off(eventName, listener)`
 
-Alias for emitter.removeListener(eventName, listener).
+Alias for `emitter.removeListener(eventName, listener)`.
 
 
 
 ## `emitter.removeListener(eventName, listener)`
 
-Removes the specified listener from the listener array for the event named eventName.
+Removes the specified listener from the listener array for the event named `eventName`.
 
-removeListener() will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified eventName, then removeListener() need NOT be called multiple times to remove each instance.
+`removeListener() `will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified eventName, then `removeListener()` need NOT be called multiple times to remove each instance.
 
 ## `emitter.once(eventName, listener)`
 
-Adds a one-time listener function for the event named eventName. The next time eventName is triggered, this listener is removed and then invoked.
+Adds a one-time listener function for the event named eventName. The next time `eventName` is triggered, this listener is removed and then invoked.
 
 ## `emitter.emit(eventName, args)`
 
-ASynchronously calls each of the listeners registered for the event named eventName, in the order they were registered, passing the supplied arguments to each.
+ASynchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
 ## `emitter.dispatch(eventName, args)`
 
-Alias for emitter.emit(eventName, args)
+Alias for `emitter.emit(eventName, args)`
 
 
 ## `emitter.eventNames()`
@@ -108,4 +108,4 @@ Returns an array listing the events for which the emitter has registered listene
 
 ## `emitter.listeners(eventName)`
 
-Returns a copy of the array of listeners for the event named eventName.
+Returns a copy of the array of listeners for the event named `eventName`.
