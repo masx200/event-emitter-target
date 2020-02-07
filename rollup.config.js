@@ -55,6 +55,25 @@ export default [
       resolve(),
       commonjs(),
       typescript({}),
+    //  mybabelplugin,
+      myterserplugin
+    ]
+  },
+  {
+    input: "./dist/index.js",
+    output: [
+      {
+        file: "./dist/index.js",
+        format: "esm",
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      sourcemaps(),
+      json(),
+      resolve(),
+      commonjs(),
+  //    typescript({}),
       mybabelplugin,
       myterserplugin
     ]
