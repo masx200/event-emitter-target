@@ -1,8 +1,12 @@
-type EventEmitterTarget = ReturnType<typeof createeventtarget>;
-declare function createorclass(this: EventEmitterTarget | undefined): EventEmitterTarget;
+type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
+interface EventEmitterTargetConstructor {
+    new (): EventEmitterTarget;
+    (this: EventEmitterTarget | undefined): EventEmitterTarget;
+}
+declare const EventEmitterTargetClass: EventEmitterTargetConstructor;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
-declare function createeventtarget(): {
+declare function createEventEmitterTarget(): {
     [Symbol.toStringTag]: string;
     listenerCount: (name: EVENTNAME) => number;
     clear: (name: EVENTNAME) => void;
@@ -17,5 +21,4 @@ declare function createeventtarget(): {
     eventNames: () => EVENTNAME[];
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
-declare const a: typeof createorclass;
-export { a as default };
+export { EventEmitterTargetClass as default, EventEmitterTarget, EventEmitterTargetConstructor, EVENTNAME, EVENTLISTENER };

@@ -1,22 +1,22 @@
 export type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
-
-export default EventEmitterTargetConstructor;
-
-const EventEmitterTargetConstructor: {
+export interface EventEmitterTargetConstructor {
   new (): EventEmitterTarget;
-} & createEventEmitterTarget = function EventEmitterTargetConstructor(
+  (this: EventEmitterTarget | undefined): EventEmitterTarget;
+}
+const EventEmitterTargetClass: EventEmitterTargetConstructor = function EventEmitterTargetClass(
   this: EventEmitterTarget | undefined
 ): EventEmitterTarget {
   const eventemittertarget = createEventEmitterTarget();
-  if (this && this instanceof EventEmitterTargetConstructor) {
+  if (this && this instanceof EventEmitterTargetClass) {
     Object.assign(this, eventemittertarget);
-    return this;
+    return this as EventEmitterTarget;
   } else {
-    return new EventEmitterTargetConstructor();
+    return Reflect.construct(EventEmitterTargetClass, []) as EventEmitterTarget;
   }
-};
+} as EventEmitterTargetConstructor;
 export type EVENTNAME = string | symbol;
 export type EVENTLISTENER = (event?: any) => void;
+export default EventEmitterTargetClass;
 
 function createEventEmitterTarget() {
   const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
