@@ -2,45 +2,45 @@
 
 发布订阅事件机制模块
 
-用Typescript函数式编程写成
+用 Typescript 函数式编程写成
 
 添加事件监听器有自动去重功能
 
 事件触发时，监听器函数异步执行
- 
+
 # API
 
 https://github.com/masx200/event-emitter-target/blob/master/dist/index.d.ts
 
 ```ts
 interface EventEmitterTargetConstructor {
-    new (): EventEmitterTarget;
-    (this: EventEmitterTarget | undefined): EventEmitterTarget;
+  new (): EventEmitterTarget;
+  (this: EventEmitterTarget | undefined): EventEmitterTarget;
 }
 type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 
 declare function createEventEmitterTarget(): {
-    [Symbol.toPrimitive]: typeof toprimitive;
-    [Symbol.toStringTag]: string;
-    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-    listenerCount: (name: EVENTNAME) => number;
-    clear: (name: EVENTNAME) => void;
-    removeAllListeners: (name: EVENTNAME) => void;
-    on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    emit: (name: EVENTNAME, event?: any) => void;
-    dispatch: (name: EVENTNAME, event?: any) => void;
-    eventNames: () => EVENTNAME[];
-    listeners: (name: EVENTNAME) => EVENTLISTENER[];
+  [Symbol.toPrimitive]: typeof toprimitive;
+  [Symbol.toStringTag]: string;
+  [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+  listenerCount: (name: EVENTNAME) => number;
+  clear: (name: EVENTNAME) => void;
+  removeAllListeners: (name: EVENTNAME) => void;
+  on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+  addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+  off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+  removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+  once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+  emit: (name: EVENTNAME, event?: any) => void;
+  dispatch: (name: EVENTNAME, event?: any) => void;
+  eventNames: () => EVENTNAME[];
+  listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
 declare function toprimitive(): string;
-
 ```
+
 ## `emitter[Symbol.toStringTag]`
 
 此属性值为 `"EventEmitterTarget"`，
@@ -65,7 +65,6 @@ declare function toprimitive(): string;
 
 删除代码中其他地方添加的侦听器是一种不好的做法，尤其是在`EventEmitterTarget`实例由其他组件或模块创建时。
 
-
 ## `emitter.on(eventName, listener)`
 
 将监听器函数添加到名为`eventName`的事件的监听器数组的末尾。检查是否已添加侦听器。通过`eventName`和`listener`的相同组合进行的多次调用不会导致多次添加和调用该监听器。
@@ -82,7 +81,7 @@ declare function toprimitive(): string;
 
 从名为`eventName`的事件的侦听器数组中删除指定的侦听器。
 
-`removeListener() `将最多从侦听器数组中删除一个侦听器实例。如果已将任何单个侦听器多次添加到指定`eventName`的侦听器数组，则`removeListener()`无需多次调用即可删除每个实例。
+`removeListener()`将最多从侦听器数组中删除一个侦听器实例。如果已将任何单个侦听器多次添加到指定`eventName`的侦听器数组，则`removeListener()`无需多次调用即可删除每个实例。
 
 ## `emitter.once(eventName, listener)`
 
