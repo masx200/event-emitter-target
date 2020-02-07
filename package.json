@@ -25,7 +25,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "prettier": "$ prettier README.md --write&&prettier --parser=typescript --write ./src/**/*.ts",
+    "prettier": "prettier *.json --write && prettier *.md --write&&prettier --parser=typescript --write ./src/**/*.ts",
     "watch": "rollup -c  rollup.config.js --watch",
     "build": "rollup -c  rollup.config.js"
   },
