@@ -1,10 +1,10 @@
 export type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 export interface EventEmitterTargetConstructor {
   new (): EventEmitterTarget;
-  (this: EventEmitterTarget | undefined|void): EventEmitterTarget;
+  (): EventEmitterTarget;
 }
 const EventEmitterTargetClass: EventEmitterTargetConstructor = function EventEmitterTargetClass(
-  this: EventEmitterTarget | undefined|void
+  this: any
 ): EventEmitterTarget {
   const eventemittertarget = createEventEmitterTarget();
   if (this && this instanceof EventEmitterTargetClass) {
