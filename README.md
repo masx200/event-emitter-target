@@ -69,7 +69,9 @@ declare function createEventEmitterTarget(): {
   [Symbol.toPrimitive]: typeof toprimitive;
   [Symbol.toStringTag]: string;
   [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-  listenerCount: (name: EVENTNAME) => number;
+ entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+  
+ listenerCount: (name: EVENTNAME) => number;
   clear: (name: EVENTNAME) => void;
   removeAllListeners: (name: EVENTNAME) => void;
   on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
@@ -102,6 +104,10 @@ declare function toprimitive(): string;
 ## `emitter[Symbol.iterator]()`
 
 返回所有的事件名和监听器的数组迭代器
+
+## `emitter.entries()`
+
+别名 `emitter[Symbol.iterator]()`
 
 ## `emitter.listenerCount(eventName)`
 
