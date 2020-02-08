@@ -59,7 +59,7 @@ https://github.com/masx200/event-emitter-target/blob/master/dist/index.d.ts
 ```ts
 interface EventEmitterTargetConstructor {
   new (): EventEmitterTarget;
-  (this: EventEmitterTarget | undefined): EventEmitterTarget;
+  (): EventEmitterTarget;
 }
 type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 type EVENTNAME = string | symbol;
