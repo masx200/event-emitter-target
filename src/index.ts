@@ -129,6 +129,7 @@ function createEventEmitterTarget() {
 
     [Symbol.toStringTag]: toStringTag,
     [Symbol.iterator]: iterator,
+entries: iterator,
     listenerCount,
     clear,
     removeAllListeners: clear,
