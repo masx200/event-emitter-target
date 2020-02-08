@@ -1,7 +1,7 @@
 type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 interface EventEmitterTargetConstructor {
     new (): EventEmitterTarget;
-    (this: EventEmitterTarget | undefined): EventEmitterTarget;
+    (): EventEmitterTarget;
 }
 declare const EventEmitterTargetClass: EventEmitterTargetConstructor;
 type EVENTNAME = string | symbol;

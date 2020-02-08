@@ -11,7 +11,7 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = function EventEmi
     Object.assign(this, eventemittertarget);
     return this as EventEmitterTarget;
   } else {
-return eventemittertarget
+    return eventemittertarget;
     //return Reflect.construct(EventEmitterTargetClass, []) as EventEmitterTarget;
   }
 } as EventEmitterTargetConstructor;
