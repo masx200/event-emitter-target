@@ -87,7 +87,7 @@ declare function createEventEmitterTarget(): {
 declare function toprimitive(): string;
 ```
 
-## `EventEmitterTargetClass`
+## `EventEmitterTargetClass()`
 
 1.可当做函数使用
 
