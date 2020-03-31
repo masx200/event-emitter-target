@@ -7,7 +7,7 @@
         "resolveJsonModule": true,
         "declaration": true,
         "noUnusedLocals": true,
-        "checkJs": true,
+        "checkJs": false,
         "importHelpers": true,
         "removeComments": true,
         "allowJs": true,

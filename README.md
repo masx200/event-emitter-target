@@ -47,7 +47,7 @@ let emitter = new myemitter();
 
 ```js
 emitter.on("event", () => {
-  console.log("an event occurred!");
+    console.log("an event occurred!");
 });
 emitter.emit("event");
 ```
@@ -58,31 +58,31 @@ https://github.com/masx200/event-emitter-target/blob/master/dist/index.d.ts
 
 ```ts
 interface EventEmitterTargetConstructor {
-  new (): EventEmitterTarget;
-  (): EventEmitterTarget;
+    new (): EventEmitterTarget;
+    (): EventEmitterTarget;
 }
 type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
 type EVENTNAME = string | symbol;
 type EVENTLISTENER = (event?: any) => void;
 
 declare function createEventEmitterTarget(): {
-  [Symbol.toPrimitive]: typeof toprimitive;
-  [Symbol.toStringTag]: string;
-  [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-  entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+    [Symbol.toPrimitive]: typeof toprimitive;
+    [Symbol.toStringTag]: string;
+    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+    entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
 
-  listenerCount: (name: EVENTNAME) => number;
-  clear: (name: EVENTNAME) => void;
-  removeAllListeners: (name: EVENTNAME) => void;
-  on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-  addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-  off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-  removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-  once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-  emit: (name: EVENTNAME, event?: any) => void;
-  dispatch: (name: EVENTNAME, event?: any) => void;
-  eventNames: () => EVENTNAME[];
-  listeners: (name: EVENTNAME) => EVENTLISTENER[];
+    listenerCount: (name: EVENTNAME) => number;
+    clear: (name: EVENTNAME) => void;
+    removeAllListeners: (name: EVENTNAME) => void;
+    on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    emit: (name: EVENTNAME, event?: any) => void;
+    dispatch: (name: EVENTNAME, event?: any) => void;
+    eventNames: () => EVENTNAME[];
+    listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
 declare function toprimitive(): string;
 ```

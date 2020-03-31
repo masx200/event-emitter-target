@@ -1,11 +1,4 @@
-type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
-interface EventEmitterTargetConstructor {
-    new (): EventEmitterTarget;
-    (): EventEmitterTarget;
-}
-declare const EventEmitterTargetClass: EventEmitterTargetConstructor;
-type EVENTNAME = string | symbol;
-type EVENTLISTENER = (event?: any) => void;
+declare function toprimitive(): string;
 declare function createEventEmitterTarget(): {
     [Symbol.toPrimitive]: typeof toprimitive;
     [Symbol.toStringTag]: string;
@@ -24,5 +17,12 @@ declare function createEventEmitterTarget(): {
     eventNames: () => EVENTNAME[];
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
 };
-declare function toprimitive(): string;
+type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
+interface EventEmitterTargetConstructor {
+    new (): EventEmitterTarget;
+    (): EventEmitterTarget;
+}
+declare const EventEmitterTargetClass: EventEmitterTargetConstructor;
+type EVENTNAME = string | symbol;
+type EVENTLISTENER = (event?: any) => void;
 export { EventEmitterTargetClass as default, EventEmitterTarget, EventEmitterTargetConstructor, EVENTNAME, EVENTLISTENER };

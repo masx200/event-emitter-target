@@ -17,27 +17,27 @@ const mybabelplugin = babel({
                     "last 1 edge version",
                     "last 1 safari version",
                     "last 1 chrome version",
-                    "last 1 firefox version"
-                ]
-            }
-        ]
-    ]
+                    "last 1 firefox version",
+                ],
+            },
+        ],
+    ],
 });
 const myterserplugin = terser({
     sourcemap: true,
     toplevel: true,
     output: {
         comments: !1,
-        ascii_only: !0
+        ascii_only: !0,
     },
     compress: {
         toplevel: true,
         unused: true,
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ["console.log"]
+        pure_funcs: ["console.log"],
     },
-    mangle: { properties: false }
+    mangle: { properties: false },
 });
 export default [
     {
@@ -46,8 +46,8 @@ export default [
             {
                 file: "./dist/index.js",
                 format: "esm",
-                sourcemap: true
-            }
+                sourcemap: true,
+            },
         ],
         plugins: [
             // sourcemaps(),
@@ -56,8 +56,8 @@ export default [
             commonjs(),
             typescript({}),
             //  mybabelplugin,
-            myterserplugin
-        ]
+            myterserplugin,
+        ],
     },
     {
         input: "./dist/index.js",
@@ -65,8 +65,8 @@ export default [
             {
                 file: "./dist/index.js",
                 format: "esm",
-                sourcemap: true
-            }
+                sourcemap: true,
+            },
         ],
         plugins: [
             // sourcemaps(),
@@ -75,7 +75,7 @@ export default [
             commonjs(),
             //    typescript({}),
             mybabelplugin,
-            myterserplugin
-        ]
-    }
+            myterserplugin,
+        ],
+    },
 ];
