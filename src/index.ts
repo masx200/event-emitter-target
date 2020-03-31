@@ -15,8 +15,7 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
             Object.assign(this, eventemittertarget);
             return this as EventEmitterTarget;
         } else {
-            return eventemittertarget;
-            //return Reflect.construct(EventEmitterTargetClass, []) as EventEmitterTarget;
+            return Reflect.construct(EventEmitterTargetClass, []);
         }
     }
     Reflect.set(EventEmitterTargetClass, a, b);
