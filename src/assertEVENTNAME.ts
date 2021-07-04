@@ -1,4 +1,4 @@
-import { EVENTNAME } from './index';
+import { EVENTNAME } from "./index";
 
 export function assertEVENTNAME(name: any): asserts name is EVENTNAME {
     if ("string" !== typeof name && "symbol" !== typeof name) {

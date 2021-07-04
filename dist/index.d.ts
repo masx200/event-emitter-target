@@ -2,8 +2,14 @@ declare function toprimitive(): string;
 declare function createEventEmitterTarget(): {
     [Symbol.toPrimitive]: typeof toprimitive;
     [Symbol.toStringTag]: string;
-    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-    entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+    [Symbol.iterator]: () => IterableIterator<[
+        EVENTNAME,
+        EVENTLISTENER[]
+    ]>;
+    entries: () => IterableIterator<[
+        EVENTNAME,
+        EVENTLISTENER[]
+    ]>;
     listenerCount: (name: EVENTNAME) => number;
     clear: (name: EVENTNAME) => void;
     removeAllListeners: (name: EVENTNAME) => void;

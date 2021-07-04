@@ -1,4 +1,4 @@
-import { EVENTNAME, EVENTLISTENER } from './index';
+import { EVENTNAME, EVENTLISTENER } from "./index";
 import { toprimitive } from "./toprimitive";
 import { toStringTag } from "./toStringTag";
 import { assertEVENTNAME } from "./assertEVENTNAME";
@@ -7,9 +7,8 @@ export function createEventEmitterTarget() {
     const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
     const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
     function 获取监听器集合(name: EVENTNAME): Set<EVENTLISTENER> {
-        let 监听器集合: Set<EVENTLISTENER> | undefined = 监听器回调映射.get(
-            name
-        );
+        let 监听器集合: Set<EVENTLISTENER> | undefined =
+            监听器回调映射.get(name);
         if (!监听器集合) {
             监听器集合 = new Set();
             监听器回调映射.set(name, 监听器集合);
@@ -88,8 +87,7 @@ export function createEventEmitterTarget() {
         if (监听器回调映射.has(name)) {
             const 监听器集合 = 获取监听器集合(name);
             return [...监听器集合];
-        }
-        else {
+        } else {
             return [];
         }
     }
@@ -98,8 +96,7 @@ export function createEventEmitterTarget() {
         if (监听器回调映射.has(name)) {
             const 监听器集合 = 获取监听器集合(name);
             return 监听器集合.size;
-        }
-        else {
+        } else {
             return 0;
         }
     }
