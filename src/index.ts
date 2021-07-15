@@ -7,7 +7,9 @@ export interface EventEmitterTargetConstructor {
 }
 const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
     var a = noop();
-    var b = new Function("return async()=>{}")()();
+    try {
+        var b = new Function("return async()=>{}")()();
+    } catch (error) {}
 
     function EventEmitterTargetClass(this: any): EventEmitterTarget {
         const eventemittertarget = createEventEmitterTarget();

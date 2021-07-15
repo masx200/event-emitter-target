@@ -11,19 +11,7 @@ const mybabelplugin = babel({
     sourcemap: true,
     extensions: [".ts", ".js"],
     plugins: ["@babel/plugin-proposal-optional-catch-binding"],
-    presets: [
-        [
-            "@babel/preset-env",
-            {
-                targets: [
-                    "last 1 edge version",
-                    "last 1 safari version",
-                    "last 1 chrome version",
-                    "last 1 firefox version",
-                ],
-            },
-        ],
-    ],
+    presets: [["@babel/preset-env", {}]],
 });
 const myterserplugin = terser({
     toplevel: true,
