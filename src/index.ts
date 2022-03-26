@@ -1,9 +1,10 @@
 import {
+    EventEmitterTarget,
     createEventEmitterTarget,
     EventEmitterTargetOptions,
 } from "./createEventEmitterTarget";
 
-export type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
+export type { EventEmitterTarget };
 export type Constructor<ARGS extends Array<any>, RES extends object> = {
     new (args: ARGS): RES;
 };

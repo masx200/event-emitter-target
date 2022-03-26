@@ -1,4 +1,4 @@
-import {babel} from "@rollup/plugin-babel";
+import { babel } from "@rollup/plugin-babel";
 // import sourcemaps from "rollup-plugin-sourcemaps";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";

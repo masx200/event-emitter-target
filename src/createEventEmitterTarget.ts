@@ -4,11 +4,9 @@ import { toStringTag } from "./toStringTag";
 import { assertEVENTNAME } from "./assertEVENTNAME";
 import { assertEVENTLISTENER } from "./assertEVENTLISTENER";
 export type EventEmitterTargetOptions = { sync?: boolean };
-export function createEventEmitterTarget({
-    sync = false,
-}: EventEmitterTargetOptions = {}): {
+export interface EventEmitterTarget {
     sync: boolean;
-    [Symbol.toPrimitive]: typeof toprimitive;
+    [Symbol.toPrimitive]: () => string;
     [Symbol.toStringTag]: string;
     [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
     entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
@@ -24,7 +22,11 @@ export function createEventEmitterTarget({
     dispatch: (name: EVENTNAME, event?: any) => void;
     eventNames: () => EVENTNAME[];
     listeners: (name: EVENTNAME) => EVENTLISTENER[];
-} {
+}
+
+export function createEventEmitterTarget({
+    sync = false,
+}: EventEmitterTargetOptions = {}): EventEmitterTarget {
     const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
     const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
     function 获取监听器集合(name: EVENTNAME): Set<EVENTLISTENER> {
