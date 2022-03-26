@@ -32,7 +32,7 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
             );
             return this as EventEmitterTarget;
         } else {
-            return Reflect.construct(EventEmitterTargetClass, []);
+            return eventemittertarget;
         }
     }
     Reflect.set(EventEmitterTargetClass, a, b);
