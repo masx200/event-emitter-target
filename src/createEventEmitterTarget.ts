@@ -3,7 +3,28 @@ import { toprimitive } from "./toprimitive";
 import { toStringTag } from "./toStringTag";
 import { assertEVENTNAME } from "./assertEVENTNAME";
 import { assertEVENTLISTENER } from "./assertEVENTLISTENER";
-export function createEventEmitterTarget() {
+export type EventEmitterTargetOptions = { sync?: boolean };
+export function createEventEmitterTarget({
+    sync = false,
+}: EventEmitterTargetOptions = {}): {
+    sync: boolean;
+    [Symbol.toPrimitive]: typeof toprimitive;
+    [Symbol.toStringTag]: string;
+    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+    entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
+    listenerCount: (name: EVENTNAME) => number;
+    clear: (name: EVENTNAME) => void;
+    removeAllListeners: (name: EVENTNAME) => void;
+    on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
+    emit: (name: EVENTNAME, event?: any) => void;
+    dispatch: (name: EVENTNAME, event?: any) => void;
+    eventNames: () => EVENTNAME[];
+    listeners: (name: EVENTNAME) => EVENTLISTENER[];
+} {
     const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
     const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
     function 获取监听器集合(name: EVENTNAME): Set<EVENTLISTENER> {
@@ -28,9 +49,13 @@ export function createEventEmitterTarget() {
         if (监听器回调映射.has(name)) {
             const 监听器集合 = 获取监听器集合(name);
             监听器集合.forEach((listener) => {
-                Promise.resolve().then(() => {
+                if (sync) {
                     listener(event);
-                });
+                } else {
+                    Promise.resolve().then(() => {
+                        listener(event);
+                    });
+                }
             });
         }
     }
@@ -128,6 +153,7 @@ export function createEventEmitterTarget() {
         dispatch: emit,
         eventNames,
         listeners,
+        sync,
     };
     return eventtarget;
 }

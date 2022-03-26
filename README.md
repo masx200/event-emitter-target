@@ -39,7 +39,7 @@ class myemitter extends EventEmitterTargetClass {}
 let emitter = new myemitter();
 ```
 
-以下示例显示了`EventEmitterTarget`具有单个侦听器的简单实例。
+3.以下示例显示了`EventEmitterTarget`具有单个侦听器的简单实例。
 
 该`EventEmitterTarget.on()`方法用于注册侦听器，
 
@@ -52,40 +52,21 @@ emitter.on("event", () => {
 emitter.emit("event");
 ```
 
+4.使用参数`sync`创建同步的`EventEmitterTarget`
+
+```js
+let emitter = EventEmitterTargetClass({ sync: true });
+```
+
+如果参数`sync`为`true`,则在触发事件时,使用同步的方式调用侦听器.
+
+如果参数`sync`为`false`,则在触发事件时,使用异步的方式调用侦听器.
+
 # API
 
-https://github.com/masx200/event-emitter-target/blob/master/dist/index.d.ts
+typescript 类型声明文件
 
-```ts
-interface EventEmitterTargetConstructor {
-    new (): EventEmitterTarget;
-    (): EventEmitterTarget;
-}
-type EventEmitterTarget = ReturnType<typeof createEventEmitterTarget>;
-type EVENTNAME = string | symbol;
-type EVENTLISTENER = (event?: any) => void;
-
-declare function createEventEmitterTarget(): {
-    [Symbol.toPrimitive]: typeof toprimitive;
-    [Symbol.toStringTag]: string;
-    [Symbol.iterator]: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-    entries: () => IterableIterator<[EVENTNAME, EVENTLISTENER[]]>;
-
-    listenerCount: (name: EVENTNAME) => number;
-    clear: (name: EVENTNAME) => void;
-    removeAllListeners: (name: EVENTNAME) => void;
-    on: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    addListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    off: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    removeListener: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    once: (name: EVENTNAME, callback: EVENTLISTENER) => void;
-    emit: (name: EVENTNAME, event?: any) => void;
-    dispatch: (name: EVENTNAME, event?: any) => void;
-    eventNames: () => EVENTNAME[];
-    listeners: (name: EVENTNAME) => EVENTLISTENER[];
-};
-declare function toprimitive(): string;
-```
+https://github.com/masx200/event-emitter-target/blob/master/src/index.ts
 
 ## `EventEmitterTargetClass()`
 
@@ -160,3 +141,9 @@ declare function toprimitive(): string;
 ## `emitter.listeners(eventName)`
 
 返回名为`eventName`的事件的侦听器数组的副本。
+
+# changelog
+
+2022 年 3 月 26 日 14:34:58
+
+创建`EventEmitterTarget`时,添加了可选参数`sync`.
