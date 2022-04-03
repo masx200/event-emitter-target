@@ -27,7 +27,7 @@ export interface EventEmitterTarget<
     once: EventEmitterTarget<EventMap>["on"];
     emit: <K extends keyof EventMap>(
         name: K,
-        event?: EventMap[K]
+        event: EventMap[K]
     ) => Promise<void>;
     dispatch: EventEmitterTarget<EventMap>["emit"];
     eventNames: () => (keyof EventMap)[];
@@ -60,7 +60,7 @@ export function createEventEmitterTarget<
             监听器集合.clear();
         }
     }
-    async function emit(name: EVENTNAME, event?: any): Promise<void> {
+    async function emit(name: EVENTNAME, event: any): Promise<void> {
         assertEVENTNAME(name);
         if (监听器回调映射.has(name)) {
             const 监听器集合 = 获取监听器集合(name);
