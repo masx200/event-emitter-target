@@ -6,6 +6,7 @@ import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 import typescript from "rollup-plugin-ts";
 import { defineConfig } from "rollup";
+import rollupExternalModules from "rollup-external-modules";
 const mybabelplugin = babel({
     babelHelpers: "bundled",
     sourcemap: true,
@@ -31,9 +32,12 @@ const myterserplugin = terser({
 });
 export default defineConfig([
     {
+        external: rollupExternalModules,
+
         input: "./src/index.ts",
         output: [
             {
+                banner: "import regeneratorRuntime from 'regenerator-runtime';",
                 file: "./dist/index.js",
                 format: "esm",
                 sourcemap: "inline",
@@ -50,6 +54,7 @@ export default defineConfig([
         ],
     },
     {
+        external: rollupExternalModules,
         input: "./dist/index.js",
         output: [
             {
