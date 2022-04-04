@@ -37,7 +37,7 @@ export interface EventEmitterTarget<
 }
 
 export function createEventEmitterTarget<
-        EventMap extends Record<string | symbol, any> = Record<string | symbol, any>
+    EventMap extends Record<string | symbol, any> = Record<string | symbol, any>
 >({
     sync = false,
 }: EventEmitterTargetOptions = {}): EventEmitterTarget<EventMap> {
