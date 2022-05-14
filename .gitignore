@@ -103,6 +103,6 @@ typings/
 
 # TernJS port file
 .tern-port
-yarn.lock
+#yarn.lock
 *.zip
 *.gz
