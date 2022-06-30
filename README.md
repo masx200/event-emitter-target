@@ -141,9 +141,3 @@ https://github.com/masx200/event-emitter-target/blob/master/src/index.ts
 ## `emitter.listeners(eventName)`
 
 返回名为`eventName`的事件的侦听器数组的副本。
-
-# changelog
-
-2022 年 3 月 26 日 14:34:58
-
-创建`EventEmitterTarget`时,添加了可选参数`sync`.

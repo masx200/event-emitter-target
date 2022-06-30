@@ -1,7 +1,7 @@
 import {
     EventEmitterTarget,
     createEventEmitterTarget,
-    EventEmitterTargetOptions,
+    // EventEmitterTargetOptions,
 } from "./createEventEmitterTarget";
 
 export type { EventEmitterTarget };
@@ -21,10 +21,10 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
     } catch (error) {}
 
     function EventEmitterTargetClass(
-        this: any,
-        options?: EventEmitterTargetOptions
+        this: any
+        // options?: EventEmitterTargetOptions
     ): EventEmitterTarget {
-        const eventemittertarget = createEventEmitterTarget(options);
+        const eventemittertarget = createEventEmitterTarget(/* options */);
         if (this && this instanceof EventEmitterTargetClass) {
             // Object.assign(this, eventemittertarget);
             Reflect.ownKeys(eventemittertarget).forEach((key) =>
@@ -42,4 +42,4 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
 export type EVENTNAME = string | symbol;
 export type EVENTLISTENER = (event?: any) => void;
 export default EventEmitterTargetClass;
-export { EventEmitterTargetOptions };
+// export { EventEmitterTargetOptions };

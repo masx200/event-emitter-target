@@ -3,11 +3,11 @@ import { toprimitive } from "./toprimitive";
 import { toStringTag } from "./toStringTag";
 import { assertEVENTNAME } from "./assertEVENTNAME";
 import { assertEVENTLISTENER } from "./assertEVENTLISTENER";
-export type EventEmitterTargetOptions = { sync?: boolean };
+// export type EventEmitterTargetOptions = { sync?: boolean };
 export interface EventEmitterTarget<
     EventMap extends Record<string | symbol, any> = Record<string | symbol, any>
 > {
-    sync: boolean;
+    // sync: boolean;
     [Symbol.toPrimitive]: () => string;
     [Symbol.toStringTag]: string;
     [Symbol.iterator]: EventEmitterTarget<EventMap>["entries"];
@@ -38,9 +38,9 @@ export interface EventEmitterTarget<
 
 export function createEventEmitterTarget<
     EventMap extends Record<string | symbol, any> = Record<string | symbol, any>
->({
+>(/* {
     sync = false,
-}: EventEmitterTargetOptions = {}): EventEmitterTarget<EventMap> {
+}: EventEmitterTargetOptions = {} */): EventEmitterTarget<EventMap> {
     const 监听器回调映射 = new Map<EVENTNAME, Set<EVENTLISTENER>>();
     const 源回调到一次包装 = new WeakMap<EVENTLISTENER, EVENTLISTENER>();
     function 获取监听器集合(name: EVENTNAME): Set<EVENTLISTENER> {
@@ -191,7 +191,7 @@ export function createEventEmitterTarget<
         dispatch: emit,
         eventNames,
         listeners,
-        sync,
+        // sync,
     } as EventEmitterTarget<EventMap>;
     return eventtarget;
 }
