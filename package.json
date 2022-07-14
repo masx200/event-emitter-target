@@ -44,6 +44,7 @@
     "main": "./dist/index.cjs",
     "license": "MIT",
     "scripts": {
+        "test": "vitest run",
         "format": "prettier  --write *.json   *.md  ./**/*.ts *.mjs",
         "build": "rollup -c  rollup.config.mjs"
     },

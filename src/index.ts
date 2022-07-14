@@ -6,7 +6,7 @@ import {
 
 export type { EventEmitterTarget };
 export type Constructor<ARGS extends Array<any>, RES extends object> = {
-    new (args: ARGS): RES;
+    new (...args: ARGS): RES;
 };
 export type EventEmitterTargetConstructor = typeof createEventEmitterTarget &
     Constructor<
@@ -18,6 +18,8 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
     var a = noop();
     try {
         var b = new Function("return async()=>{}")()();
+        Reflect.set(EventEmitterTargetClass, a, b);
+        Reflect.set(EventEmitterTargetClass, a, undefined);
     } catch (error) {}
 
     function EventEmitterTargetClass(
@@ -35,7 +37,6 @@ const EventEmitterTargetClass: EventEmitterTargetConstructor = ((noop) => {
             return eventemittertarget;
         }
     }
-    Reflect.set(EventEmitterTargetClass, a, b);
 
     return EventEmitterTargetClass as EventEmitterTargetConstructor;
 })(Symbol);
